@@ -88,6 +88,7 @@ export function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
             className={`group flex items-center gap-2 rounded-full px-3 py-1.5 font-mono text-xs sm:text-sm transition ${
               scrolled ? "glass-strong" : "glass"
             }`}
+            aria-label="Yogesh Negi Home"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success/70" />
