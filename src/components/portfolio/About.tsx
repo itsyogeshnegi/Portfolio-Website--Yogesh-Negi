@@ -3,7 +3,7 @@ import { Users, Briefcase, Rocket, Award } from "lucide-react";
 
 const stats = [
   { icon: Users, label: "Users supported on PVR/INOX", value: "1M+" },
-  { icon: Briefcase, label: "Years of experience", value: "3+" },
+  { icon: Briefcase, label: "Years of experience", value: "4+" },
   { icon: Rocket, label: "Production features shipped", value: "100+" },
   { icon: Award, label: "Performance boost achieved", value: "40%" },
 ];
@@ -22,7 +22,7 @@ export function About() {
             className="lg:col-span-3 space-y-4 sm:space-y-5 text-base sm:text-lg leading-relaxed text-muted-foreground"
           >
             <p>
-              I am a <span className="text-foreground font-medium">Software Developer with 3+ years of experience</span> architecting and optimizing high-performance web applications using <span className="text-foreground font-medium">React.js, Next.js, JavaScript, TypeScript, Node.js, and Express</span>.
+              I am a <span className="text-foreground font-medium">Software Developer with 4+ years of experience</span> architecting and optimizing high-performance web applications using <span className="text-foreground font-medium">React.js, Next.js, JavaScript, TypeScript, Node.js, and Express</span>.
             </p>
             <p>
               I have delivered production enterprise platforms for <span className="text-foreground font-medium">PVR Cinemas, INOX Movies, Aelixar</span>, and multi-tenant loyalty CMS platforms. Passionate about solving complex frontend challenges, reducing load times by <span className="text-foreground font-medium">up to 40%</span>, and implementing secure payment integrations with <span className="text-foreground font-medium">Stripe & Razorpay</span>.

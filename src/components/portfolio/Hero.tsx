@@ -81,7 +81,7 @@ export function Hero() {
           transition={{ delay: 0.45 }}
           className="mt-5 sm:mt-8 max-w-2xl text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground"
         >
-          Software Developer with <span className="text-foreground font-medium">3+ years of experience</span> building scalable{" "}
+          Software Developer with <span className="text-foreground font-medium">4+ years of experience</span> building scalable{" "}
           <span className="text-foreground font-medium">React.js, Next.js, TypeScript</span> and{" "}
           <span className="text-foreground font-medium">Node.js</span> applications. Delivered enterprise solutions for PVR Cinemas, INOX Movies, and loyalty platforms supporting 1M+ users.
         </motion.p>
@@ -149,7 +149,7 @@ export function Hero() {
             <span className="text-muted-foreground">// Frontend Developer @ Wemonde · ex-Locad</span>{"\n"}
             <span className="text-accent">const</span> <span className="text-cyan">yogesh</span> <span className="text-muted-foreground">=</span> {"{"}
             {"\n"}  role: <span className="text-primary">"Software Developer"</span>,
-            {"\n"}  exp: <span className="text-primary">"3+ Years"</span>,
+            {"\n"}  exp: <span className="text-primary">"4+ Years"</span>,
             {"\n"}  stack: [<span className="text-primary">"React"</span>, <span className="text-primary">"Next.js"</span>, <span className="text-primary">"TypeScript"</span>, <span className="text-primary">"Node.js"</span>],
             {"\n"}  enterprise: [<span className="text-primary">"PVR Cinemas"</span>, <span className="text-primary">"CellXchange"</span>, <span className="text-primary">"Aelixar"</span>],
             {"\n"}  usersSupported: <span className="text-cyan">1_000_000</span>,
