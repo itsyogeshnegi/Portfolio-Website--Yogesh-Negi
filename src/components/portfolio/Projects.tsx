@@ -118,17 +118,18 @@ export function Projects() {
   const list = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="relative py-28">
+    <section id="projects" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex flex-wrap items-end justify-between gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <SectionHeader tag="03 / work" title={<>Selected <span className="text-gradient">builds</span> that shipped.</>} />
-          <div className="flex flex-wrap gap-1 rounded-full glass p-1">
+          
+          <div className="flex flex-wrap gap-1 rounded-full glass p-1 self-start sm:self-auto">
             {filters.map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
                 className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${
-                  filter === f ? "bg-gradient-to-br from-primary to-accent text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+                  filter === f ? "bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {f}
@@ -137,77 +138,92 @@ export function Projects() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 sm:mt-12 grid gap-6 lg:grid-cols-2">
           {list.map((p, i) => (
             <motion.article
               key={p.id}
-              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ delay: i * 0.06 }}
-              className="group relative overflow-hidden rounded-3xl glass-strong p-6 transition hover:border-primary/40"
+              initial={{ opacity: 0, y: 30 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true, margin: "-40px" }} 
+              transition={{ delay: i * 0.06 }}
+              className="group relative overflow-hidden rounded-3xl glass-strong border border-white/10 p-5 sm:p-6 transition hover:border-primary/40 flex flex-col justify-between"
             >
-              {/* animated border glow */}
-              <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition duration-500 group-hover:opacity-100"
-                   style={{ background: "radial-gradient(400px circle at var(--mx,50%) var(--my,50%), oklch(0.72 0.22 255 / 0.12), transparent 50%)" }} />
-
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="font-mono text-xs text-cyan">
-                    {p.index} · <span className="text-muted-foreground">{p.role}</span>
-                  </p>
-                  <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">{p.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
-                </div>
-                {p.live && p.live.startsWith("http") ? (
-                  <a href={p.live} target="_blank" rel="noreferrer" className="rounded-full border border-white/10 p-2 transition group-hover:border-primary/40 group-hover:bg-primary/10">
-                    <ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </a>
-                ) : (
-                  <div className="rounded-full border border-white/10 p-2 transition group-hover:border-primary/40 group-hover:bg-primary/10">
-                    <ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              {/* Header */}
+              <div>
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="font-mono text-xs text-cyan">
+                      {p.index} · <span className="text-muted-foreground">{p.role}</span>
+                    </p>
+                    <h3 className="mt-2 text-xl sm:text-2xl font-semibold tracking-tight text-foreground">{p.title}</h3>
+                    <p className="mt-1 text-xs sm:text-sm text-muted-foreground">{p.tagline}</p>
                   </div>
-                )}
+                  {p.live && p.live.startsWith("http") ? (
+                    <a 
+                      href={p.live} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      aria-label={`Open ${p.title} live website`}
+                      className="rounded-full border border-white/10 p-2 text-muted-foreground transition hover:border-primary/40 hover:bg-primary/10 hover:text-foreground shrink-0"
+                    >
+                      <ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </a>
+                  ) : null}
+                </div>
+
+                {/* Preview Image */}
+                <div className="group/img relative mt-5 aspect-[16/9] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-surface to-background">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-40 transition-opacity group-hover/img:opacity-20" />
+                  <div className="absolute left-3 top-3 flex gap-1.5 rounded-full bg-black/60 px-2.5 py-1 backdrop-blur border border-white/10">
+                    <span className="h-2 w-2 rounded-full bg-red-500/80" />
+                    <span className="h-2 w-2 rounded-full bg-yellow-500/80" />
+                    <span className="h-2 w-2 rounded-full bg-green-500/80" />
+                  </div>
+                  <div className="absolute bottom-3 right-3 rounded-md bg-black/70 px-2 py-1 font-mono text-[10px] text-cyan backdrop-blur border border-white/10">
+                    {p.category}
+                  </div>
+                </div>
+
+                {/* Description & Highlight */}
+                <p className="mt-4 text-xs sm:text-sm leading-relaxed text-muted-foreground">{p.description}</p>
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-foreground/85">
+                  <span className="text-cyan">▸</span> {p.highlight}
+                </p>
               </div>
 
-              {/* preview */}
-              <div className="group/img relative mt-6 aspect-[16/9] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-surface to-background">
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-40 transition-opacity group-hover/img:opacity-20" />
-                <div className="absolute left-3 top-3 flex gap-1.5 rounded-full bg-black/50 px-2.5 py-1 backdrop-blur border border-white/10">
-                  <span className="h-2 w-2 rounded-full bg-red-500/80" />
-                  <span className="h-2 w-2 rounded-full bg-yellow-500/80" />
-                  <span className="h-2 w-2 rounded-full bg-green-500/80" />
-                </div>
-                <div className="absolute bottom-3 right-3 rounded-md bg-black/60 px-2 py-1 font-mono text-[10px] text-cyan backdrop-blur border border-white/10">
-                  {p.category}
-                </div>
-              </div>
-
-              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
-              <p className="mt-2 text-sm leading-relaxed text-foreground/85">
-                <span className="text-cyan">▸</span> {p.highlight}
-              </p>
-
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+              {/* Tags & Action links */}
+              <div className="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-white/5">
                 <div className="flex flex-wrap gap-1.5">
                   {p.tags.map((t) => (
-                    <span key={t} className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-1 font-mono text-[11px] text-muted-foreground">
+                    <span key={t} className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-1 font-mono text-[10px] sm:text-[11px] text-muted-foreground">
                       {t}
                     </span>
                   ))}
                 </div>
-                <div className="flex gap-2">
+                <div className="flex items-center gap-2 self-start sm:self-auto">
                   {p.live && (
-                    <a href={p.live} target={p.live.startsWith("http") ? "_blank" : "_self"} rel="noreferrer"
-                       className="inline-flex items-center gap-1 rounded-md border border-white/10 px-2.5 py-1.5 text-xs text-foreground/85 hover:border-primary/40 transition">
+                    <a 
+                      href={p.live} 
+                      target={p.live.startsWith("http") ? "_blank" : "_self"} 
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 rounded-lg border border-white/10 px-2.5 py-1.5 text-xs text-foreground/85 hover:border-primary/40 hover:text-foreground transition"
+                    >
                       <ExternalLink className="h-3.5 w-3.5" /> {p.live.startsWith("http") ? "Live Site" : "Overview"}
                     </a>
                   )}
                   {p.repo && (
-                    <a href={p.repo} target="_blank" rel="noreferrer"
-                       className="inline-flex items-center gap-1 rounded-md border border-white/10 px-2.5 py-1.5 text-xs text-foreground/85 hover:border-primary/40 transition">
+                    <a 
+                      href={p.repo} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 rounded-lg border border-white/10 px-2.5 py-1.5 text-xs text-foreground/85 hover:border-primary/40 hover:text-foreground transition"
+                    >
                       <Github className="h-3.5 w-3.5" /> Code
                     </a>
                   )}

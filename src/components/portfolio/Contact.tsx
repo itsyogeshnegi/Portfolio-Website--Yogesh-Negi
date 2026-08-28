@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
-import { Github, Linkedin, Mail, MapPin, Send, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Send, AlertCircle, CheckCircle2, Phone } from "lucide-react";
 import { SectionHeader } from "./About";
 
 const SERVICE_ID = "service_xpfbree";
@@ -57,14 +57,14 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-28">
+    <section id="contact" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader tag="06 / contact" title={<>Have an idea? <span className="text-gradient">Let's build it.</span></>} />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-5">
-          {/* Left panel */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="rounded-2xl glass-strong p-6">
+        <div className="mt-10 sm:mt-12 grid gap-6 lg:grid-cols-5">
+          {/* Left panel info */}
+          <div className="lg:col-span-2 space-y-3 sm:space-y-4">
+            <div className="rounded-2xl glass-strong border border-white/10 p-5 sm:p-6">
               <div className="flex items-center gap-2">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success/70" />
@@ -72,47 +72,62 @@ export function Contact() {
                 </span>
                 <p className="font-mono text-xs uppercase tracking-widest text-success">Available for work</p>
               </div>
-              <p className="mt-4 text-lg leading-relaxed">
-                Currently accepting freelance projects and full-time roles for
-                <span className="text-foreground"> Q3–Q4</span>. I typically reply within{" "}
-                <span className="text-foreground">24 hours</span>.
+              <p className="mt-3 text-base sm:text-lg leading-relaxed text-muted-foreground">
+                Currently accepting freelance projects and full-time roles. I typically reply within{" "}
+                <span className="text-foreground font-medium">24 hours</span>.
               </p>
             </div>
 
-            <a href="mailto:yyogesh.singh.negi@gmail.com"
-               className="flex items-center gap-3 rounded-2xl glass p-4 transition hover:border-primary/40">
-              <Mail className="h-5 w-5 text-cyan" />
-              <div>
-                <p className="text-xs text-muted-foreground">Email</p>
-                <p className="text-sm">yyogesh.singh.negi@gmail.com</p>
+            <a 
+              href="mailto:yyogesh.singh.negi@gmail.com"
+              className="flex items-center gap-3 rounded-2xl glass border border-white/10 p-3.5 sm:p-4 transition hover:border-primary/40"
+            >
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-2 shrink-0">
+                <Mail className="h-4 w-4 text-cyan" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[11px] text-muted-foreground">Email</p>
+                <p className="text-xs sm:text-sm font-medium text-foreground truncate">yyogesh.singh.negi@gmail.com</p>
               </div>
             </a>
 
-            <a href="tel:8745073655"
-               className="flex items-center gap-3 rounded-2xl glass p-4 transition hover:border-primary/40">
-              <span className="font-mono text-cyan text-sm">📞</span>
+            <a 
+              href="tel:8745073655"
+              className="flex items-center gap-3 rounded-2xl glass border border-white/10 p-3.5 sm:p-4 transition hover:border-primary/40"
+            >
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-2 shrink-0">
+                <Phone className="h-4 w-4 text-cyan" />
+              </div>
               <div>
-                <p className="text-xs text-muted-foreground">Phone</p>
-                <p className="text-sm">+91 8745073655</p>
+                <p className="text-[11px] text-muted-foreground">Phone</p>
+                <p className="text-xs sm:text-sm font-medium text-foreground">+91 8745073655</p>
               </div>
             </a>
 
-            <div className="grid grid-cols-2 gap-3">
-              <a href="https://www.linkedin.com/in/yogesh-negi-7b8568302" target="_blank" rel="noreferrer"
-                 className="flex items-center gap-2 rounded-2xl glass p-4 transition hover:border-primary/40">
-                <Linkedin className="h-4 w-4 text-cyan" />
-                <span className="text-sm">LinkedIn</span>
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
+              <a 
+                href="https://www.linkedin.com/in/yogesh-negi-7b8568302" 
+                target="_blank" 
+                rel="noreferrer"
+                className="flex items-center gap-2.5 rounded-2xl glass border border-white/10 p-3.5 sm:p-4 transition hover:border-primary/40"
+              >
+                <Linkedin className="h-4 w-4 text-cyan shrink-0" />
+                <span className="text-xs sm:text-sm font-medium">LinkedIn</span>
               </a>
-              <a href="https://github.com/" target="_blank" rel="noreferrer"
-                 className="flex items-center gap-2 rounded-2xl glass p-4 transition hover:border-primary/40">
-                <Github className="h-4 w-4 text-cyan" />
-                <span className="text-sm">GitHub</span>
+              <a 
+                href="https://github.com/" 
+                target="_blank" 
+                rel="noreferrer"
+                className="flex items-center gap-2.5 rounded-2xl glass border border-white/10 p-3.5 sm:p-4 transition hover:border-primary/40"
+              >
+                <Github className="h-4 w-4 text-cyan shrink-0" />
+                <span className="text-xs sm:text-sm font-medium">GitHub</span>
               </a>
             </div>
 
-            <div className="flex items-center gap-3 rounded-2xl glass p-4">
-              <MapPin className="h-4 w-4 text-cyan" />
-              <p className="text-sm text-muted-foreground">Delhi, India · Remote-friendly</p>
+            <div className="flex items-center gap-3 rounded-2xl glass border border-white/10 p-3.5 sm:p-4">
+              <MapPin className="h-4 w-4 text-cyan shrink-0" />
+              <p className="text-xs sm:text-sm text-muted-foreground">Delhi, India · Remote & Hybrid</p>
             </div>
           </div>
 
@@ -120,8 +135,10 @@ export function Contact() {
           <motion.form
             ref={formRef}
             onSubmit={onSubmit}
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="rounded-2xl glass-strong p-6 lg:col-span-3 space-y-4"
+            initial={{ opacity: 0, y: 20 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true }}
+            className="rounded-2xl glass-strong border border-white/10 p-5 sm:p-6 lg:col-span-3 space-y-4"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <FloatingInput label="Your name" name="name" required />
@@ -154,7 +171,7 @@ export function Contact() {
             <button
               type="submit"
               disabled={loading}
-              className="group mt-2 inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-br from-primary via-primary to-accent px-6 py-3 text-sm font-medium text-primary-foreground shadow-[0_0_40px_-8px_oklch(0.72_0.22_255/0.7)] transition hover:shadow-[0_0_50px_-4px_oklch(0.68_0.24_305/0.7)] disabled:opacity-70"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-br from-primary via-primary to-accent px-6 py-3 text-sm font-medium text-primary-foreground shadow-[0_0_35px_-8px_oklch(0.72_0.22_255/0.7)] transition hover:shadow-[0_0_45px_-4px_oklch(0.68_0.24_305/0.7)] disabled:opacity-70 text-center"
             >
               {loading ? "Sending email…" : (<>Send message <Send className="h-4 w-4 transition group-hover:translate-x-0.5" /></>)}
             </button>
@@ -173,7 +190,7 @@ function FloatingInput({ label, name, type = "text", required = false }: { label
         name={name}
         type={type}
         placeholder=" "
-        className="peer w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 pb-2 pt-5 text-sm text-foreground outline-none transition placeholder-transparent focus:border-primary/60 focus:bg-white/[0.05] focus:ring-2 focus:ring-primary/20"
+        className="peer w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 pb-2 pt-5 text-xs sm:text-sm text-foreground outline-none transition placeholder-transparent focus:border-primary/60 focus:bg-white/[0.05] focus:ring-2 focus:ring-primary/20"
       />
       <span className="pointer-events-none absolute left-4 top-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-xs peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:top-2 peer-focus:text-[10px] peer-focus:uppercase peer-focus:tracking-widest peer-focus:text-cyan">
         {label}
@@ -188,9 +205,9 @@ function FloatingTextarea({ label, name, required = false }: { label: string; na
       <textarea
         required={required}
         name={name}
-        rows={5}
+        rows={4}
         placeholder=" "
-        className="peer w-full resize-none rounded-xl border border-white/10 bg-white/[0.03] px-4 pb-2 pt-5 text-sm text-foreground outline-none transition placeholder-transparent focus:border-primary/60 focus:bg-white/[0.05] focus:ring-2 focus:ring-primary/20"
+        className="peer w-full resize-none rounded-xl border border-white/10 bg-white/[0.03] px-4 pb-2 pt-5 text-xs sm:text-sm text-foreground outline-none transition placeholder-transparent focus:border-primary/60 focus:bg-white/[0.05] focus:ring-2 focus:ring-primary/20"
       />
       <span className="pointer-events-none absolute left-4 top-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-xs peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-focus:top-2 peer-focus:text-[10px] peer-focus:uppercase peer-focus:tracking-widest peer-focus:text-cyan">
         {label}

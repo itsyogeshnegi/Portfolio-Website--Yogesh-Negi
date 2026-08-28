@@ -1,5 +1,4 @@
-@import "tailwindcss" source(none);
-@source "../src";
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -76,7 +75,12 @@
 .dark { color-scheme: dark; }
 
 @layer base {
-  html { color-scheme: dark; }
+  html { 
+    color-scheme: dark; 
+    overflow-x: hidden;
+    max-width: 100%;
+    scroll-behavior: smooth;
+  }
   * { border-color: var(--color-border); }
   body {
     background-color: var(--background);
@@ -85,6 +89,8 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
   }
   ::selection { background: oklch(0.72 0.22 255 / 0.35); color: white; }
   h1,h2,h3,h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
